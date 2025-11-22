@@ -1,17 +1,17 @@
-/* Full page with background */
 .index-wrapper {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
-    ),
-    url("/assets/index-bg.jpg") center/cover no-repeat; /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.4); /* dark overlay */
+
   display: flex;
   flex-direction: column;
 }
 
-/* ---------------- NAVBAR ---------------- */
+
 .index-navbar {
   display: flex;
   justify-content: space-between;

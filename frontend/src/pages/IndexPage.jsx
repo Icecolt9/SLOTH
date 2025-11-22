@@ -1,18 +1,19 @@
-// src/pages/IndexPage.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import "../Styles/IndexPage.css";
+import bamboo from "../pics/bamboo.jpg"; 
 
 const IndexPage = () => {
   return (
-    <div className="index-wrapper">
-
-      {/* AUTH NAVBAR (only on this page) */}
+    <div
+      className="index-wrapper"
+      style={{ backgroundImage: `url(${bamboo})` }} 
+    >
+    
       <header className="index-navbar">
         <div className="index-brand">SLOTH</div>
 
         <nav className="index-nav-right">
-
           <Link to="/login" className="index-nav-link">
             Login
           </Link>
@@ -26,18 +27,16 @@ const IndexPage = () => {
               <Link to="/signup/shop">Register a Shop</Link>
             </div>
           </div>
-
         </nav>
       </header>
 
-      {/* MAIN LANDING CONTENT */}
+      
       <div className="index-content">
         <h1>Shop At Your Own Pace</h1>
         <p>Lesotho’s most relaxed shopping experience.</p>
 
         
       </div>
-
     </div>
   );
 };
