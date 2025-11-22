@@ -1,0 +1,88 @@
+/* src/pages/Home.css */
+
+.home {
+  min-height: 100vh; /* full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center vertically */
+  align-items: center; /* center horizontally */
+  background: linear-gradient(to bottom, #c8e7be 0%, #ffffff 100%); /* light green to white */
+  color: #222; /* dark charcoal text */
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  padding: 0 1.5rem; /* horizontal padding for mobile */
+}
+
+/* Headings */
+.home h1 {
+  font-size: 3.5rem;
+  font-weight: 700; /* bold */
+  color: #000000; /* green */
+  margin-bottom: 1.5rem;
+}
+
+/* Body text */
+.home p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+
+/* Search Bar */
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.65rem 1rem;
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-bar:focus {
+  border-color: #006837; /* green accent on focus */
+  box-shadow: 0 0 5px rgba(0, 104, 55, 0.3);
+}
+
+
+/* Button group */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Outlined buttons */
+.outlined-btn {
+  background: none;
+  border: 1px solid #9ebd56;
+  color: #222;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 0; /* square corners */
+}
+
+.outlined-btn:hover {
+  background-color: #39c643;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .home h1 {
+    font-size: 2rem;
+  }
+  .home h2 {
+    font-size: 1.4rem;
+  }
+  .outlined-btn {
+    padding: 0.6rem 1.5rem;
+  }
+}
