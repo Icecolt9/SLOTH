@@ -1,42 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../Styles/IndexPage.css";
-import bamboo from "../pics/bamboo.jpg"; 
+import "../Styles/IndexPage.css"; // regular CSS file
 
 const IndexPage = () => {
+  const [showSignupOptions, setShowSignupOptions] = useState(false);
+
   return (
-    <div
-      className="index-wrapper"
-      style={{ backgroundImage: `url(${bamboo})` }} 
-    >
-    
-      <header className="index-navbar">
-        <div className="index-brand">SLOTH</div>
+    <div className="index-wrapper">
+      {/* Navbar */}
+      <nav className="index-navbar">
+        <div className="index-nav-links">
+          <Link to="#">About</Link>
+          <Link to="#">Contact</Link>
+        </div>
+      </nav>
 
-        <nav className="index-nav-right">
-          <Link to="/login" className="index-nav-link">
-            Login
-          </Link>
+      {/* Hero Section */}
+      <main className="index-hero">
+        <h1 className="index-title">SLOTH</h1>
+        <p className="index-tagline">Shop at your own pace</p>
 
-          <div className="index-dropdown">
-            <button className="index-nav-link">Sign Up ▾</button>
-
-            <div className="index-dropdown-menu">
-              <Link to="/signup/user">Register as User</Link>
-              <Link to="/signup/rider">Register as Rider</Link>
-              <Link to="/signup/shop">Register a Shop</Link>
-            </div>
+        {/* Buttons / Cards */}
+        {!showSignupOptions ? (
+          <div className="index-buttons">
+            <Link to="/login" className="index-btn login-btn">
+              Login
+            </Link>
+            <button
+              onClick={() => setShowSignupOptions(true)}
+              className="index-btn signup-btn"
+            >
+              Sign Up
+            </button>
           </div>
-        </nav>
-      </header>
-
-      
-      <div className="index-content">
-        <h1>Shop At Your Own Pace</h1>
-        <p>Lesotho’s most relaxed shopping experience.</p>
-
-        
-      </div>
+        ) : (
+          <div className="index-buttons">
+            <Link to="/signup/user" className="index-btn option-btn">
+              Register as Customer
+            </Link>
+            <Link to="/signup/rider" className="index-btn option-btn">
+              Register as Rider
+            </Link>
+            <Link to="/signup/shop" className="index-btn option-btn">
+              Register a Shop
+            </Link>
+            <button
+              onClick={() => setShowSignupOptions(false)}
+              className="index-btn back-btn"
+            >
+              Back
+            </button>
+          </div>
+        )}
+      </main>
     </div>
   );
 };
