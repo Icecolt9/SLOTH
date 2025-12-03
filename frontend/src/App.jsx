@@ -11,8 +11,8 @@ import Technology from "./pages/Technology";
 import LoginPage from "./pages/LoginPage";
 import "./index.css";
 
-import RiderHome from "./pages/rider/Riderhome";
-import ShopHome from "./pages/shop/Shophome";
+import RiderHome from "./pages/rider/RiderHome";
+import ShopHome from "./pages/shop/ShopHome";
 import ProductPage from "./pages/shop/ProductPage";
 import ShopListPage from "./pages/shop/ShopListPage";
 
