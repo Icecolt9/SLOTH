@@ -27,23 +27,23 @@ const Navbar = () => {
           <FaHome /> Home
         </NavLink>
 
-        <NavLink to="/clothing" className="nav-link" onClick={() => setMenuOpen(false)}>
+        <NavLink to="/shops/clothing" className="nav-link">
           <FaTshirt /> Clothing
         </NavLink>
 
-        <NavLink to="/cosmetics" className="nav-link" onClick={() => setMenuOpen(false)}>
+        <NavLink to="/shops/cosmetics" className="nav-link">
           <FaPalette /> Cosmetics
         </NavLink>
 
-        <NavLink to="/food" className="nav-link" onClick={() => setMenuOpen(false)}>
+        <NavLink to="/shops/food" className="nav-link">
           <FaAppleAlt /> Food
         </NavLink>
 
-        <NavLink to="/accessories" className="nav-link" onClick={() => setMenuOpen(false)}>
+        <NavLink to="/shops/accessories" className="nav-link">
           <FaShoppingBag /> Accessories
         </NavLink>
 
-        <NavLink to="/technology" className="nav-link" onClick={() => setMenuOpen(false)}>
+        <NavLink to="/shops/technology" className="nav-link">
           <FaHeadphones /> Technology
         </NavLink>
       </nav>

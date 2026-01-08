@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 import "../Styles/Auth.css";
 
-const SignupRider = () => {
+const SignupCustomer = () => {
   const navigate = useNavigate();
 
-  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,12 +14,12 @@ const SignupRider = () => {
       const response = await API.post("/api/auth/signup/", {
         email,
         password,
-        role: "rider",
+        role: "customer",
       });
 
       if (response.status === 201) {
-        alert("Rider account created!");
-        navigate("/login");
+        alert("Signup successful!");
+        navigate("/login"); // redirect to login page
       }
     } catch (error) {
       console.error(error);
@@ -31,15 +30,9 @@ const SignupRider = () => {
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
-        <h1>Rider Sign Up</h1>
-        <p className="auth-subtitle">Join as a delivery rider</p>
+        <h1>Customer Sign Up</h1>
+        <p className="auth-subtitle">Create your customer account</p>
 
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
         <input
           type="email"
           placeholder="Email"
@@ -54,11 +47,11 @@ const SignupRider = () => {
         />
 
         <button className="auth-btn" onClick={handleSignup}>
-          Join as Rider
+          Create Account
         </button>
       </div>
     </div>
   );
 };
 
-export default SignupRider;
+export default SignupCustomer;

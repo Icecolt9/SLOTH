@@ -35,7 +35,7 @@ const IndexPage = () => {
           </div>
         ) : (
           <div className="index-buttons">
-            <Link to="/signup/user" className="index-btn option-btn">
+            <Link to="/signup/customer" className="index-btn option-btn">
               Register as Customer
             </Link>
             <Link to="/signup/rider" className="index-btn option-btn">

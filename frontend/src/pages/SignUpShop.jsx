@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 import "../Styles/Auth.css";
 
-const SignupRider = () => {
+const SignupShop = () => {
   const navigate = useNavigate();
 
-  const [fullName, setFullName] = useState("");
+  const [shopName, setShopName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,11 +15,12 @@ const SignupRider = () => {
       const response = await API.post("/api/auth/signup/", {
         email,
         password,
-        role: "rider",
+        role: "shop",
+        shop_name: shopName,
       });
 
       if (response.status === 201) {
-        alert("Rider account created!");
+        alert("Shop account created!");
         navigate("/login");
       }
     } catch (error) {
@@ -31,18 +32,18 @@ const SignupRider = () => {
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
-        <h1>Rider Sign Up</h1>
-        <p className="auth-subtitle">Join as a delivery rider</p>
+        <h1>Shop Registration</h1>
+        <p className="auth-subtitle">Register your business</p>
 
         <input
           type="text"
-          placeholder="Full Name"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
+          placeholder="Shop Name"
+          value={shopName}
+          onChange={(e) => setShopName(e.target.value)}
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Business Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -54,11 +55,11 @@ const SignupRider = () => {
         />
 
         <button className="auth-btn" onClick={handleSignup}>
-          Join as Rider
+          Register Shop
         </button>
       </div>
     </div>
   );
 };
 
-export default SignupRider;
+export default SignupShop;
