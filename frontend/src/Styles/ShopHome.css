@@ -4,7 +4,9 @@
   min-height: 100vh;
   background: #f5f5f5;
   font-family: "Inter", Arial, sans-serif;
+  color: #333;
 }
+
 
 .shop-sidebar {
   width: 260px;
@@ -12,7 +14,8 @@
   color: #fff;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .shop-sidebar-header {
@@ -20,24 +23,27 @@
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #444;
 }
 
 .shop-sidebar-header h2 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
   margin: 0;
 }
 
 .shop-icon {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #63bd2f;
 }
 
-/* Nav */
+
 .shop-nav {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .shop-nav-item {
@@ -48,7 +54,7 @@
   border-radius: 8px;
   cursor: pointer;
   color: #ccc;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .shop-nav-item:hover {
@@ -59,21 +65,113 @@
 .shop-nav-item.active {
   background: #63bd2f;
   color: #fff;
+  font-weight: 600;
 }
 
 .shop-nav-item svg {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
-/* Main Content */
+
 .shop-content {
   flex: 1;
-  padding: 2rem;
+  padding: 2rem 3rem;
   background: #f5f5f5;
+  overflow-y: auto;
 }
 
-.shop-content h1 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  font-weight: 700;
+
+.profile-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.profile-form h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+  text-align: center;
+}
+
+.profile-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.profile-form label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="file"],
+.profile-form select,
+.profile-form textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  width: 100%;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-form input[type="text"]:focus,
+.profile-form select:focus,
+.profile-form textarea:focus,
+.profile-form input[type="file"]:focus {
+  border-color: #63bd2f;
+  box-shadow: 0 0 5px rgba(99, 189, 47, 0.5);
+}
+
+.profile-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.auth-btn {
+  padding: 0.75rem 1.5rem;
+  background: #63bd2f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 0.5rem;
+  align-self: flex-start;
+}
+
+.auth-btn:hover {
+  background: #53a827;
+}
+
+
+@media (max-width: 1024px) {
+  .shop-dashboard {
+    flex-direction: column;
+  }
+  .shop-sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .shop-nav {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .shop-content {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-form {
+    padding: 1rem;
+  }
 }

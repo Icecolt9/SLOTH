@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'accounts',
     'profiles',
+    'products',
 ]
 
 AUTH_USER_MODEL = "accounts.User"

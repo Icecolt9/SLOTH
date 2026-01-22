@@ -33,3 +33,6 @@ class RiderProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     vehicle_type = models.CharField(max_length=50, blank=True)
     license_number = models.CharField(max_length=50, blank=True)
+
+
+

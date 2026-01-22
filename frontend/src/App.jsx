@@ -3,50 +3,48 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import IndexPage from "./pages/IndexPage";
-//import Clothing from "./pages/Clothing";
-//import Cosmetics from "./pages/Cosmetics";
-//import Food from "./pages/Food";
-//import Accessories from "./pages/Accessories";
-//import Technology from "./pages/Technology";
-import ShopCategoryPage from "./Pages/ShopCategoryPage";
-import "./index.css";
-
-//Auth
+import ShopCategoryPage from "./pages/ShopCategoryPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpCustomer from "./pages/SignUpCustomer";
 import SignUpShop from "./pages/SignUpShop";
 import SignUpRider from "./pages/SignUpRider";
-
-
 import RiderHome from "./pages/rider/RiderHome";
 import ShopHome from "./pages/shop/ShopHome";
-import ProductPage from "./pages/shop/ProductPage";
+import ProductPage from "./pages/CustomerShopPage";
 import ShopListPage from "./pages/shop/ShopListPage";
-
+import "./index.css";
 
 const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<IndexPage />} />
+
+        <Route
+          path="/home"
+          element={<><Navbar /><Home /></>}
+        />
+
+        <Route
+          path="/shops/:category"
+          element={<><Navbar /><ShopCategoryPage /></>}
+        />
 
         
-        <Route path="/" element={<IndexPage />} />
-        <Route path="home" element={<><Navbar /><Home /></>} />
-        
-        <Route path="/shops/:category" element={<ShopCategoryPage />} />
+
+        <Route
+          path="/shop/:shopId"
+          element={<><Navbar /><ProductPage /></>}
+        />
 
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup/customer" element={<SignUpCustomer />} />
         <Route path="/signup/shop" element={<SignUpShop />} />
         <Route path="/signup/rider" element={<SignUpRider />} />
 
-        <Route path="/rider-home" element={<><RiderHome /></>} />
-        <Route path="/shop-home" element={<><ShopHome /></>} />
+        <Route path="/rider-home" element={<RiderHome />} />
+        <Route path="/shop-home" element={<ShopHome />} />
         <Route path="/shops" element={<ShopListPage />} />
-        <Route path="/shop/:category/:shopId" element={<ProductPage />} />
-
-
-
       </Routes>
 
       <footer>

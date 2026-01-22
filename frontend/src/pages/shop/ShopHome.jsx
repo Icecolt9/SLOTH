@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import "../../Styles/ShopHome.css";
+import ShopProducts from "../ShopProducts"; // <-- adjust the path
+
 import { FaUser, FaBoxOpen, FaBell, FaCog, FaStore } from "react-icons/fa";
 
 const CATEGORY_OPTIONS = ["Clothing", "Food", "Accessories", "Cosmetics", "Technology"];
@@ -113,7 +115,9 @@ const ShopHome = () => {
           </div>
         )}
 
-        {activeTab === "products" && <h1>Products</h1>}
+        {activeTab === "products" && (
+          <ShopProducts shopProfile = {shopProfile} />)}
+          
         {activeTab === "notifications" && <h1>Notifications</h1>}
         {activeTab === "settings" && <h1>Settings</h1>}
       </main>
