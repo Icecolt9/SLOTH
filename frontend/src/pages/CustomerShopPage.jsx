@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import "../Styles/CustomerShopPage.css";
 
 const CustomerShopPage = () => {
   const { shopId } = useParams();
+  const navigate = useNavigate();
 
   const [shop, setShop] = useState(null);
   const [sections, setSections] = useState([]);
@@ -21,8 +22,6 @@ const CustomerShopPage = () => {
         const res = await axios.get(
           `/api/products/shops/${shopId}/products/`
         );
-
-        console.log("SHOP RESPONSE:", res.data);
 
         setShop(res.data.shop ?? null);
         setSections(res.data.sections ?? []);
@@ -69,12 +68,16 @@ const CustomerShopPage = () => {
           <div key={section.id} className="product-section">
             <h2 className="section-title">{section.name}</h2>
 
-            {(!section.products || section.products.length === 0) ? (
+            {!section.products || section.products.length === 0 ? (
               <p className="empty-section">No products in this section</p>
             ) : (
               <div className="product-grid">
                 {section.products.map((product) => (
-                  <div key={product.id} className="product-card">
+                  <div
+                    key={product.id}
+                    className="product-card clickable"
+                    onClick={() => navigate(`/product/${product.id}`)}
+                  >
                     {product.image && (
                       <img
                         src={`http://127.0.0.1:8000${product.image}`}

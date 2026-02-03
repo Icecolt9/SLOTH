@@ -4,8 +4,10 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404
 from .models import ProductSection, Product
-from .serializers import ProductSerializer, ProductSectionSerializer
+from .models import CartItem
+from .serializers import ProductSerializer, ProductSectionSerializer, CartItemSerializer
 from rest_framework import status
 
 from .models import ProductSection, Product
@@ -62,12 +64,27 @@ class ProductCRUDView(APIView):
     permission_classes = [IsAuthenticated]
 
     def patch(self, request, pk):
-        product = Product.objects.get(pk=pk)
+        product = get_object_or_404(Product, pk=pk)
+
+        
         product.name = request.data.get("name", product.name)
         product.price = request.data.get("price", product.price)
         product.description = request.data.get("description", product.description)
+
+
+        if "full_description" in request.data:
+            product.full_description = request.data["full_description"]
+
+        if "quantity" in request.data:
+            product.quantity = request.data["quantity"]
+
         product.save()
-        return Response({"message": "Product updated successfully"})
+
+        return Response(
+            ProductSerializer(product).data,
+            status=status.HTTP_200_OK
+        )
+
 
 
 class CustomerShopProductsView(APIView):
@@ -108,3 +125,51 @@ class CustomerShopProductsView(APIView):
             },
             "sections": section_serializer.data
         })
+    
+class ProductDetailView(APIView):
+    """
+    GET /api/products/<id>/detail/
+    Returns full product info (gallery, quantity, availability, etc)
+    """
+
+    def get(self, request, id):
+        product = get_object_or_404(Product, id=id)
+        serializer = ProductSerializer(product)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+
+
+
+class AddToCartView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        product_id = request.data.get("product_id")
+
+        product = get_object_or_404(Product, id=product_id)
+
+        cart_item, created = CartItem.objects.get_or_create(
+            user=request.user,
+            product=product
+        )
+
+        if not created:
+            return Response(
+                {"detail": "Product already in cart"},
+                status=status.HTTP_200_OK
+            )
+
+        return Response(
+            {"detail": "Product added to cart"},
+            status=status.HTTP_201_CREATED
+        )
+
+#Get Cart Stuff
+
+class CartListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        cart_items = CartItem.objects.filter(user=request.user).select_related("product")
+        serializer = CartItemSerializer(cart_items, many=True)
+        return Response(serializer.data)

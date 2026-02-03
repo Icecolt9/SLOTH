@@ -18,5 +18,5 @@ class ShopProfileAdmin(admin.ModelAdmin):
 
 @admin.register(RiderProfile)
 class RiderProfileAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "vehicle_type")
-    search_fields = ("user__email",)
+    list_display = ("id", "full_name", "user", "vehicle_type")
+    search_fields = ("full_name", "user__email")

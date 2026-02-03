@@ -119,6 +119,17 @@
   color: #63bd2f;
 }
 
+.product-card.clickable {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-card.clickable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+
 
 @media (max-width: 768px) {
   .shop-header {

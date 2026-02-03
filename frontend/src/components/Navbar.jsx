@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FaBars, FaTimes, FaTshirt, FaPalette, FaAppleAlt, FaShoppingBag, FaHome, FaHeadphones } from "react-icons/fa";
+import {
+  FaBars,
+  FaTimes,
+  FaTshirt,
+  FaPalette,
+  FaAppleAlt,
+  FaShoppingBag,
+  FaHome,
+  FaHeadphones,
+  FaChevronDown,
+  FaTruck,
+  FaShoppingCart,
+  FaCog,
+} from "react-icons/fa";
 import "../Styles/Navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
 
   return (
     <header className="navbar">
@@ -17,34 +31,79 @@ const Navbar = () => {
       </div>
 
       {/* MOBILE MENU ICON */}
-      <div className="mobile-menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+      <div
+        className="mobile-menu-icon"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
         {menuOpen ? <FaTimes size={26} /> : <FaBars size={26} />}
       </div>
 
       {/* RIGHT: LINKS */}
       <nav className={`nav-right ${menuOpen ? "open" : ""}`}>
-        <NavLink to="/home" className="nav-link" end onClick={() => setMenuOpen(false)}>
+        <NavLink
+          to="/home"
+          className="nav-link"
+          end
+          onClick={() => setMenuOpen(false)}
+        >
           <FaHome /> Home
         </NavLink>
 
-        <NavLink to="/shops/clothing" className="nav-link">
-          <FaTshirt /> Clothing
+        {/* CATEGORIES DROPDOWN */}
+        <div
+          className="nav-link dropdown"
+          onClick={() => setCategoriesOpen(!categoriesOpen)}
+        >
+          Categories <FaChevronDown className="chevron" />
+
+          {categoriesOpen && (
+            <div className="dropdown-menu">
+              <NavLink to="/shops/clothing" onClick={() => setMenuOpen(false)}>
+                <FaTshirt /> Clothing
+              </NavLink>
+
+              <NavLink to="/shops/cosmetics" onClick={() => setMenuOpen(false)}>
+                <FaPalette /> Cosmetics
+              </NavLink>
+
+              <NavLink to="/shops/food" onClick={() => setMenuOpen(false)}>
+                <FaAppleAlt /> Food
+              </NavLink>
+
+              <NavLink to="/shops/accessories" onClick={() => setMenuOpen(false)}>
+                <FaShoppingBag /> Accessories
+              </NavLink>
+
+              <NavLink to="/shops/technology" onClick={() => setMenuOpen(false)}>
+                <FaHeadphones /> Technology
+              </NavLink>
+            </div>
+          )}
+        </div>
+
+        {/* NEW LINKS */}
+        <NavLink
+          to="/deliveries"
+          className="nav-link"
+          onClick={() => setMenuOpen(false)}
+        >
+          <FaTruck /> Deliveries
         </NavLink>
 
-        <NavLink to="/shops/cosmetics" className="nav-link">
-          <FaPalette /> Cosmetics
+        <NavLink
+          to="/cart"
+          className="nav-link"
+          onClick={() => setMenuOpen(false)}
+        >
+          <FaShoppingCart /> Cart
         </NavLink>
 
-        <NavLink to="/shops/food" className="nav-link">
-          <FaAppleAlt /> Food
-        </NavLink>
-
-        <NavLink to="/shops/accessories" className="nav-link">
-          <FaShoppingBag /> Accessories
-        </NavLink>
-
-        <NavLink to="/shops/technology" className="nav-link">
-          <FaHeadphones /> Technology
+        <NavLink
+          to="/settings"
+          className="nav-link"
+          onClick={() => setMenuOpen(false)}
+        >
+          <FaCog /> Settings
         </NavLink>
       </nav>
     </header>

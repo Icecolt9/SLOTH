@@ -16,6 +16,7 @@ const SignupRider = () => {
         email,
         password,
         role: "rider",
+        full_name: fullName,
       });
 
       if (response.status === 201) {

@@ -12,6 +12,11 @@ import RiderHome from "./pages/rider/RiderHome";
 import ShopHome from "./pages/shop/ShopHome";
 import ProductPage from "./pages/CustomerShopPage";
 import ShopListPage from "./pages/shop/ShopListPage";
+import ShopProductDetail from "./pages/ShopProductDetail";
+import CustomerProductDetail from "./pages/CustomerProductDetail";
+import CartPage from "./pages/CartPage";
+import DeliveryPage from "./pages/DeliveryPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import "./index.css";
 
 const App = () => {
@@ -45,6 +50,15 @@ const App = () => {
         <Route path="/rider-home" element={<RiderHome />} />
         <Route path="/shop-home" element={<ShopHome />} />
         <Route path="/shops" element={<ShopListPage />} />
+
+        <Route path="/shop/products/:id" element={<ShopProductDetail />} />
+        <Route path="/product/:productId"element={<><Navbar /><CustomerProductDetail /></>}/>
+
+        <Route path="/cart" element={<><Navbar /><CartPage /></>} />
+        <Route path="/deliveries" element={<><Navbar /><DeliveryPage /></>}/>
+        <Route path="/checkout" element={ <> <Navbar /> <CheckoutPage /> </> }/>
+
+
       </Routes>
 
       <footer>

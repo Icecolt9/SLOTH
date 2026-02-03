@@ -52,8 +52,8 @@ class SignupView(APIView):
         elif role == "rider":
             RiderProfile.objects.create(
                 user=user,
-                vehicle_type=request.data.get("vehicle_type", ""),
-                license_number=request.data.get("license_number", "")
+                full_name=request.data.get("full_name", ""),                     
+                vehicle_type=request.data.get("vehicle_type", "")
             )
 
         else:

@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from .models import ShopProfile
+from .models import RiderProfile
+from .serializers import RiderProfileSerializer
 
 class ShopProfileView(APIView):
     permission_classes = [IsAuthenticated]
@@ -60,3 +62,14 @@ class ShopListView(APIView):
             for shop in shops
         ]
         return Response(data)
+
+class RiderMeView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        try:
+            rider_profile = RiderProfile.objects.get(user=request.user)
+            serializer = RiderProfileSerializer(rider_profile)
+            return Response(serializer.data)
+        except RiderProfile.DoesNotExist:
+            return Response({"error": "Rider profile not found"}, status=404)

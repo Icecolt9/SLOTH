@@ -1,0 +1,81 @@
+.delivery-page {
+  display: flex;
+  min-height: 80vh;
+  background: #f7f7f7;
+}
+
+
+.delivery-sidebar {
+  width: 240px;
+  background: #111;
+  color: #fff;
+  padding: 20px;
+}
+
+.sidebar-title {
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+.sidebar-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: none;
+  background: #222;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 6px;
+}
+
+.sidebar-btn.active,
+.sidebar-btn:hover {
+  background: #ffb703;
+  color: #000;
+}
+
+
+.delivery-content {
+  flex: 1;
+  padding: 30px;
+}
+
+.delivery-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* ===== FORM ===== */
+.delivery-form {
+  max-width: 500px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.delivery-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.delivery-form input,
+.delivery-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.start-delivery-btn {
+  background: #ffb703;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
